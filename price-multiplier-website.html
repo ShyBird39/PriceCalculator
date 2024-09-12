@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Menu Item: Price Multiplier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Favorite Menu Item: Price Multiplier</h1>
+        <p>Enter the price of your favorite dish and see what it will cost if ballot question 5 passes</p>
+        <input type="number" id="price" placeholder="Enter current price" step="0.01">
+        <button onclick="updatePrice()">Calculate New Price</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const MULTIPLIER = 1.5;
+
+        function updatePrice() {
+            const price = parseFloat(document.getElementById('price').value);
+            
+            if (isNaN(price)) {
+                document.getElementById('result').innerText = 'Please enter a valid price';
+            } else {
+                const newPrice = price * MULTIPLIER;
+                document.getElementById('result').innerHTML = `Current price: $${price.toFixed(2)}<br>Price if ballot question 5 passes: $${newPrice.toFixed(2)}`;
+            }
+        }
+    </script>
+</body>
+</html>
